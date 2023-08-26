@@ -46,7 +46,6 @@ func (b *Bucket) AddTokens() {
 }
 
 func (b *Bucket) TakeTokens() bool {
-	time.Sleep(time.Duration(b.RefreshTokenTimeMiliSec / 2 * time.Hour.Milliseconds()))
 	b.Tokens = b.Tokens - 1
 	if b.Tokens < 0 {
 		deniedRequest.WithLabelValues("/", bucket.Tag).Inc()
